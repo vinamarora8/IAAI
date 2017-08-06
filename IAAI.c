@@ -9,8 +9,6 @@ const char COOKED[] = STTY "cooked";
 const char default_str[] = "I AM AN IDIOT ";
 
 int main(int argc, char **argv) {
-  system(RAW);
-
   const char *str;
   if ( argc == 2 )
     str = argv[1];
@@ -20,6 +18,7 @@ int main(int argc, char **argv) {
   size_t len = strlen(str);
 
   while ( 1 ) {
+    system(RAW);
     for ( size_t i = 0 ; i < len ; i++ ) {
       getchar();
       printf("\x1b[2K\r");
@@ -29,7 +28,6 @@ int main(int argc, char **argv) {
     }
     system(COOKED);
     printf("\n");
-    system(RAW);
   }
 
   return 0;
