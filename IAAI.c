@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define STTY "/bin/stty "
-const char RAW[] = STTY "raw";
-const char COOKED[] = STTY "cooked";
+const char RAW[] = "/bin/stty raw";
 
 const char default_str[] = "I AM AN IDIOT ";
 
@@ -17,8 +15,9 @@ int main(int argc, char **argv) {
 
   size_t len = strlen(str);
 
+  system(RAW);
+
   while ( 1 ) {
-    system(RAW);
     for ( size_t i = 0 ; i < len ; i++ ) {
       getchar();
       printf("\x1b[2K\r");
