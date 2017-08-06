@@ -22,7 +22,10 @@ int main(int argc, char **argv) {
   while ( 1 ) {
     for ( size_t i = 0 ; i < len ; i++ ) {
       getchar();
-      printf("\b%c", str[i]);
+      printf("\r");
+      for ( size_t j = 0 ; j <= i ; j++ ) {
+	printf("%c", str[j]);
+      }
     }
     system(COOKED);
     printf("\n");
