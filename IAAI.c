@@ -11,8 +11,8 @@ int main() {
   int i = 0;
   char str[] = "I AM AN IDIOT ";
 
-  while(1){
-    for(i = 0; i<14; i++) {
+  while ( 1 ) {
+    for ( i = 0 ; i < 14 ; i++ ) {
       getchar();
       printf("\b%c", str[i]);
     }
@@ -20,6 +20,6 @@ int main() {
     printf("\n");
     system(RAW);
   }
-	
+
   return 0;
 }
