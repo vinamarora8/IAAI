@@ -26,8 +26,7 @@ int main(int argc, char **argv) {
 	printf("%c", str[j]);
       }
     }
-    system(COOKED);
-    printf("\n");
+    printf("\n\r");
   }
 
   return 0;
