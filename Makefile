@@ -1,1 +1,3 @@
+CFLAGS=-Wall
+
 all : IAAI
