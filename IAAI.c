@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define STTY "/bin/stty "
 const char RAW[] = STTY "raw";
@@ -9,9 +10,10 @@ int main() {
   system(RAW);
 
   char str[] = "I AM AN IDIOT ";
+  size_t len = strlen(str);
 
   while ( 1 ) {
-    for ( int i = 0 ; i < 14 ; i++ ) {
+    for ( size_t i = 0 ; i < len ; i++ ) {
       getchar();
       printf("\b%c", str[i]);
     }
