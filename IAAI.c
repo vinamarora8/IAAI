@@ -6,10 +6,17 @@
 const char RAW[] = STTY "raw";
 const char COOKED[] = STTY "cooked";
 
-int main() {
+const char default_str[] = "I AM AN IDIOT ";
+
+int main(int argc, char **argv) {
   system(RAW);
 
-  char str[] = "I AM AN IDIOT ";
+  const char *str;
+  if ( argc == 2 )
+    str = argv[1];
+  else
+    str = default_str;
+
   size_t len = strlen(str);
 
   while ( 1 ) {
