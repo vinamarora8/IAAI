@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define STTY "/bin/stty "
+const char RAW[] = STTY "raw";
+const char COOKED[] = STTY "cooked";
+
 int main() {
-  system("/bin/stty raw");
+  system(RAW);
 
   int i = 0;
   char str[] = "I AM AN IDIOT ";
@@ -12,9 +16,9 @@ int main() {
       getchar();
       printf("\b%c", str[i]);
     }
-    system("/bin/stty cooked");
+    system(COOKED);
     printf("\n");
-    system("/bin/stty raw");
+    system(RAW);
   }
 	
   return 0;
