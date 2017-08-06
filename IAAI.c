@@ -1,14 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
   system("/bin/stty raw");
 
   int i = 0;
   char str[] = "I AM AN IDIOT ";
-  char c = 'a';
+
   while(1){
     for(i = 0; i<14; i++) {
-      c = getchar();
+      getchar();
       printf("\b%c", str[i]);
     }
     system("/bin/stty cooked");
