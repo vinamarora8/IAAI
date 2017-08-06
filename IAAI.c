@@ -8,11 +8,10 @@ const char COOKED[] = STTY "cooked";
 int main() {
   system(RAW);
 
-  int i = 0;
   char str[] = "I AM AN IDIOT ";
 
   while ( 1 ) {
-    for ( i = 0 ; i < 14 ; i++ ) {
+    for ( int i = 0 ; i < 14 ; i++ ) {
       getchar();
       printf("\b%c", str[i]);
     }
