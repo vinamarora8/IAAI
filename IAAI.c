@@ -1,22 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <signal.h>
+#include <string.h>
 
-int main() {
-	system("/bin/stty raw");
+const char RAW[] = "/bin/stty raw";
+#define CLEAR_LINE     "\x1b[2K"
+#define GOTO_START     "\r"
+#define GOTO_NEXT_LINE "\n"
 
-	int i = 0;
-	char str[] = "I AM AN IDIOT ";
-	char c = 'a';
-	while(1){
-		for(i = 0; i<14; i++) {
-			c = getchar();
-			printf("\b%c", str[i]);
-		}
-		system("/bin/stty cooked");
-		printf("\n");
-		system("/bin/stty raw");
-	}
-	
-	return 0;
+const char default_str[] = "I AM AN IDIOT ";
+
+int main(int argc, char **argv) {
+  const char *str;
+  if ( argc == 2 )
+    str = argv[1];
+  else
+    str = default_str;
+
+  size_t len = strlen(str);
+
+  system(RAW);
+
+  while ( 1 ) {
+    for ( size_t i = 0 ; i < len ; i++ ) {
+      getchar();
+      printf(CLEAR_LINE GOTO_START);
+      for ( size_t j = 0 ; j <= i ; j++ ) {
+	printf("%c", str[j]);
+      }
+    }
+    printf(GOTO_NEXT_LINE GOTO_START);
+  }
+
+  return 0;
 }
